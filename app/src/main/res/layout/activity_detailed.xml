@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailedActivity">
+    tools:context=".DetailActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detailName"
         android:layout_marginTop="14dp"
-        android:text="Recipe Name"
+        android:text="name"
         android:textSize="24sp"
         android:textColor="@color/lavender"
         android:textStyle="bold"
@@ -67,13 +67,13 @@
         android:layout_marginTop="20dp"
         android:textSize="18sp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/maggiIngredients"
-        android:layout_marginStart="10dp"
-        android:textSize="16sp"
-        android:id="@+id/detailIngredients"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/maggiIngredients"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:textSize="16sp"-->
+<!--        android:id="@+id/detailIngredients"/>-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,12 +85,12 @@
         android:layout_marginTop="20dp"
         android:textSize="18sp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/maggieDesc"
-        android:layout_marginStart="10dp"
-        android:textSize="16sp"
-        android:id="@+id/detailDesc"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/maggieDesc"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:textSize="16sp"-->
+<!--        android:id="@+id/detailDesc"/>-->
 
 </LinearLayout>

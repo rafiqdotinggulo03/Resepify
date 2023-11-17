@@ -1,54 +1,52 @@
 package com.example.resepify;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.view.MenuItem;
+
 
 import com.example.resepify.databinding.ActivityMainBinding;
-
-import java.util.ArrayList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
-    ActivityMainBinding binding;
-    ListAdapter listAdapter;
-    ArrayList<ListData> dataArrayList = new ArrayList<>();
-    ListData listData;
+    private ActivityMainBinding binding;
+    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment = null;
+            int itemId = item.getItemId();
+            if (itemId == R.id.navigation_home) {
+                fragment = new FragmentHome();
+            } else if (itemId == R.id.navigation_explore) {
+                fragment = new FragmentExplore();
+            } else if (itemId == R.id.navigation_account) {
+                fragment = new FragmentAccount();
+            }
+            if (fragment != null) {
+                switchFragment(fragment);
+                return true;
+            }
+            return false;
+        }
+    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//menambahkan gambarnya di image list
-        int[] imageList = {R.drawable.panada, };
-        int[] ingredientList = {R.string.pastaIngredients, R.string.maggiIngredients,R.string.cakeIngredients,R.string.pancakeIngredients,R.string.pizzaIngredients, R.string.burgerIngredients, R.string.friesIngredients};
-        int[] descList = {R.string.pastaDesc, R.string.maggieDesc, R.string.cakeDesc,R.string.pancakeDesc,R.string.pizzaDesc, R.string.burgerDesc, R.string.friesDesc};
-        String[] nameList = {"Pasta", "Maggi", "Cake", "Pancake", "Pizza","Burgers", "Fries"};
-        String[] timeList = {"30 mins", "2 mins", "45 mins","10 mins", "60 mins", "45 mins", "30 mins"};
 
-        for (int i = 0; i < imageList.length; i++){
-            listData = new ListData(nameList[i], timeList[i], ingredientList[i], descList[i], imageList[i]);
-            dataArrayList.add(listData);
+        binding.navigationBar.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+        if(savedInstanceState == null){
+            binding.navigationBar.setSelectedItemId(R.id.navigation_home);
         }
-        listAdapter = new ListAdapter(MainActivity.this, dataArrayList);
-        binding.listview.setAdapter(listAdapter);
-        binding.listview.setClickable(true);
 
-        binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, DetailedActivity.class);
-                intent.putExtra("name", nameList[i]);
-                intent.putExtra("time", timeList[i]);
-                intent.putExtra("ingredients", ingredientList[i]);
-                intent.putExtra("desc", descList[i]);
-                intent.putExtra("image", imageList[i]);
-                startActivity(intent);
-            }
-        });
+    }
+
+    private void switchFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName()).commit();
     }
 }

@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="12dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginVertical="10dp"
-    android:layout_marginHorizontal="10dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="8dp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
+    app:layout_goneMarginBottom="4dp"
+    app:cardCornerRadius="4dp">
 
-    <RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/listImage"
-            android:src="@drawable/panada"
-            android:scaleType="centerCrop"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <TextView
-            android:layout_width="120dp"
-            android:layout_height="30dp"
-            android:id="@+id/listName"
-            android:text="Name"
-            android:textColor="@color/lavender"
-            android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/listImage"/>
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:id="@+id/listTime"
-            android:text="time"
+            android:id="@+id/recipe_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/recipe_name"
+            android:textColor="@color/black"
             android:textSize="16sp"
-            android:layout_toEndOf="@id/listName"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="100dp"
-            android:textColor="@color/lavender"/>
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/recipe_time"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/recipe_time"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/recipe_name"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/recepi_time_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recipe_time"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/recipe_time"
+            app:layout_constraintTop_toBottomOf="@id/recipe_name"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
